@@ -28,12 +28,14 @@ THE SOFTWARE.
 #if !defined(__i386__) && defined(__arm__)
 //if defined neon ASM routines are used, otherwise all calls to *_neon 
 //functions are rerouted to their equivalent *_c function.
-#define __MATH_NEON			
+#ifdef __MATH_NEON
+#undef __MATH_NEON
+#endif
 
 //Default Floating Point value ABI: 0=softfp, 1=hardfp. Only effects *_neon routines.
 //You can access the hardfp versions directly via the *_hard suffix. 
 //You can access the softfp versions directly via the *_soft suffix. 
-#define __MATH_FPABI 	1	
+#define __MATH_FPABI 	0
 
 #endif
 
